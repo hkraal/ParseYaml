@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yamldotnet", "yamldotnet\yamldotnet.csproj", "{D8D119F4-F7A4-4C0F-A7C9-92E3F3BFBCC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example1", "Example1\Example1.csproj", "{44D37FF9-DD3F-4165-9F38-5A0F0F4C2BC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D8D119F4-F7A4-4C0F-A7C9-92E3F3BFBCC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8D119F4-F7A4-4C0F-A7C9-92E3F3BFBCC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8D119F4-F7A4-4C0F-A7C9-92E3F3BFBCC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D37FF9-DD3F-4165-9F38-5A0F0F4C2BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D37FF9-DD3F-4165-9F38-5A0F0F4C2BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D37FF9-DD3F-4165-9F38-5A0F0F4C2BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D37FF9-DD3F-4165-9F38-5A0F0F4C2BC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
