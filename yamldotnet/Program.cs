@@ -31,10 +31,13 @@ namespace yamldotnet
                 var myKey = ((YamlScalarNode)entry.Key).Value;
                 Console.WriteLine(myKey);
 
+                YamlScalarNode myYamlScalarNode = new YamlScalarNode(myKey);
+                var tmpItem = mapping.Children[myYamlScalarNode];
+
                 // The next line will throw:
                 // An unhandled exception of type 'System.InvalidCastException' occurred in yamldotnet.exe
                 // Additional information: Unable to cast object of type 'YamlDotNet.RepresentationModel.YamlMappingNode' to type 'YamlDotNet.RepresentationModel.YamlSequenceNode'.
-                var items = (YamlSequenceNode)mapping.Children[new YamlScalarNode(myKey)];
+                var items = (YamlSequenceNode)tmpItem;
                 foreach (YamlMappingNode item in items)
                 {
                     Console.WriteLine(
