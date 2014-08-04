@@ -8,8 +8,10 @@ namespace ConsoleApplication1.Models
 {
     class YamlBlueprint
     {
+        private int _Id;
+
         public int Id;
-        public YamlBlueprintActivity[] Activities;
+        public List<YamlBlueprintActivity> Activities;
         public int blueprintTypeID;
         public int maxProductionLimit;
     }
@@ -17,18 +19,12 @@ namespace ConsoleApplication1.Models
     class YamlBlueprintActivity
     {
         public int Id;
-        public YamlBlueprintMaterials[] Materials;
-        public YamlBlueprintProduct[] Products;
+        public List<YamlBlueprintMaterials> Materials;
+        public List<YamlBlueprintMaterials> Products;
         public int Time;
     }
 
     class YamlBlueprintMaterials
-    {
-        public int Id;
-        public int Quantity;
-    }
-
-    class YamlBlueprintProduct
     {
         public int Id;
         public int Quantity;
