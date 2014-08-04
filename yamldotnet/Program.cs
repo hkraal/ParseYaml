@@ -22,44 +22,33 @@ namespace yamldotnet
             yaml.Load(input);
 
             // Create the mapping 
-            YamlMappingNode mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
+            YamlMappingNode yamlRoot = (YamlMappingNode)yaml.Documents[0].RootNode;
 
             // Loop trough all child entries and print our keys
             string key = string.Empty;
-            foreach (var entry in mapping.Children)
+            foreach (var entry in yamlRoot.Children)
             {
-                // { { activities, { { 1, { { materials, { { 38, { { quantity, 86 } } } } }, { products, { { 165, { { quantity, 1 } } } } }, { time, 600 } } }, { 3, { { time, 210 } } }, { 4, { { time, 210 } } }, { 5, { { time, 480 } } } } }, { blueprintTypeID, 681 }, { maxProductionLimit, 300 } }
-                var entryValue = entry.Value;
+                var blueprintId = ((YamlScalarNode)entry.Key).Value;
+                YamlScalarNode blueprintNode = new YamlScalarNode(blueprintId);
+                var blueprint = yamlRoot.Children[blueprintNode];
+                Console.WriteLine("{0} = {1}", blueprintId, blueprint);
 
-                // "681"
-                var myKey = ((YamlScalarNode)entry.Key).Value;
-                Console.WriteLine(myKey);
-
-                // { { activities, { { 1, { { materials, { { 38, { { quantity, 86 } } } } }, { products, { { 165, { { quantity, 1 } } } } }, { time, 600 } } }, { 3, { { time, 210 } } }, { 4, { { time, 210 } } }, { 5, { { time, 480 } } } } }, { blueprintTypeID, 681 }, { maxProductionLimit, 300 } }
-                YamlMappingNode blueprint = (YamlMappingNode)entry.Value;
-
-                // "681"
-                YamlScalarNode myYamlScalarNode = new YamlScalarNode(myKey);
-
-                // { { activities, { { 1, { { materials, { { 38, { { quantity, 86 } } } } }, { products, { { 165, { { quantity, 1 } } } } }, { time, 600 } } }, { 3, { { time, 210 } } }, { 4, { { time, 210 } } }, { 5, { { time, 480 } } } } }, { blueprintTypeID, 681 }, { maxProductionLimit, 300 } }
-                var tmpItem = mapping.Children[myYamlScalarNode];
-
-
-                // The next line will throw:
-                // An unhandled exception of type 'System.InvalidCastException' occurred in yamldotnet.exe
-                // Additional information: Unable to cast object of type 'YamlDotNet.RepresentationModel.YamlMappingNode' to type 'YamlDotNet.RepresentationModel.YamlSequenceNode'.
-                var items = (YamlSequenceNode)tmpItem;
-                foreach (YamlMappingNode item in items)
+                YamlMappingNode yamlBlueprintRoot = (YamlMappingNode)blueprint;
+                foreach (var blueprintEntry in yamlBlueprintRoot.Children)
                 {
-                    Console.WriteLine(
-                        "{0}\t{1}",
-                        item.Children[new YamlScalarNode("blueprintTypeID")],
-                        item.Children[new YamlScalarNode("maxProductionLimit")]
-                    );
+                    var myKey = ((YamlScalarNode)blueprintEntry.Key).Value;
+                    YamlScalarNode myYamlScalarNode = new YamlScalarNode(myKey);
+                    var myValue = yamlBlueprintRoot.Children[myYamlScalarNode];
+
+                    Console.WriteLine("\t{0} = {1}", myKey, myValue);
                 }
-                Console.WriteLine("Press any key to exit.");
-                System.Console.ReadKey();
+
+                //Console.WriteLine("Press any key to continue.");
+                //System.Console.ReadKey();
             }
+            Console.WriteLine("Press any key to exit.");
+            System.Console.ReadKey();
+
         }
     }
 }
