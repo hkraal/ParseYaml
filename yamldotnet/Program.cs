@@ -28,11 +28,22 @@ namespace yamldotnet
             string key = string.Empty;
             foreach (var entry in mapping.Children)
             {
+                // { { activities, { { 1, { { materials, { { 38, { { quantity, 86 } } } } }, { products, { { 165, { { quantity, 1 } } } } }, { time, 600 } } }, { 3, { { time, 210 } } }, { 4, { { time, 210 } } }, { 5, { { time, 480 } } } } }, { blueprintTypeID, 681 }, { maxProductionLimit, 300 } }
+                var entryValue = entry.Value;
+
+                // "681"
                 var myKey = ((YamlScalarNode)entry.Key).Value;
                 Console.WriteLine(myKey);
 
+                // { { activities, { { 1, { { materials, { { 38, { { quantity, 86 } } } } }, { products, { { 165, { { quantity, 1 } } } } }, { time, 600 } } }, { 3, { { time, 210 } } }, { 4, { { time, 210 } } }, { 5, { { time, 480 } } } } }, { blueprintTypeID, 681 }, { maxProductionLimit, 300 } }
+                YamlMappingNode blueprint = (YamlMappingNode)entry.Value;
+
+                // "681"
                 YamlScalarNode myYamlScalarNode = new YamlScalarNode(myKey);
+
+                // { { activities, { { 1, { { materials, { { 38, { { quantity, 86 } } } } }, { products, { { 165, { { quantity, 1 } } } } }, { time, 600 } } }, { 3, { { time, 210 } } }, { 4, { { time, 210 } } }, { 5, { { time, 480 } } } } }, { blueprintTypeID, 681 }, { maxProductionLimit, 300 } }
                 var tmpItem = mapping.Children[myYamlScalarNode];
+
 
                 // The next line will throw:
                 // An unhandled exception of type 'System.InvalidCastException' occurred in yamldotnet.exe
