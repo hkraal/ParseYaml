@@ -47,6 +47,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YamlBlueprint.cs" />
+    <Compile Include="YamlBlueprintActivities.cs" />
+    <Compile Include="YamlBlueprintActivityCoping.cs" />
+    <Compile Include="YamlBlueprintActivityInvention.cs" />
+    <Compile Include="YamlBlueprintActivityManufacturing.cs" />
+    <Compile Include="YamlBlueprintActivityResearchMaterial.cs" />
+    <Compile Include="YamlBlueprintActivityResearchTime.cs" />
+    <Compile Include="YamlBlueprintInventionProduct.cs" />
+    <Compile Include="YamlBlueprintMaterials.cs" />
+    <Compile Include="YamlBlueprints.cs" />
+    <Compile Include="YamlBlueprintSkill.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

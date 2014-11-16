@@ -2,31 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using YamlDotNet.Serialization;
 
-namespace ConsoleApplication1.Models
+namespace yamldotnet
 {
     class YamlBlueprint
     {
-        private int _Id;
-
-        public int Id;
-        public List<YamlBlueprintActivity> Activities;
-        public int blueprintTypeID;
-        public int maxProductionLimit;
-    }
-
-    class YamlBlueprintActivity
-    {
-        public int Id;
-        public List<YamlBlueprintMaterials> Materials;
-        public List<YamlBlueprintMaterials> Products;
-        public int Time;
-    }
-
-    class YamlBlueprintMaterials
-    {
-        public int Id;
-        public int Quantity;
+        public YamlBlueprintActivities activities { get; set; }
+        public int blueprintTypeID { get; set; }
+        public int maxProductionLimit { get; set; }
     }
 }
